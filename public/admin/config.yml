@@ -52,4 +52,5 @@ collections:
         name: "config"
         file: "src/site/config.json"
         fields:
-          - {label: "Google Analytics Tag ID", name: gaTagId, widget: string}
+          - {label: "Copyright Statement", name: copyright,widget: string, required: false}
+          - {label: "Google Analytics Tag ID", name: gaTagId, widget: string, required: false}
