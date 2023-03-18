@@ -18,3 +18,38 @@ collections:
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
+
+  - label: "Site Settings"
+    name: "site"
+    files:
+      - label: "About Us"
+        name: "about"
+        file: "src/site/about.json"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Position, name: position, widget: string}
+              - {label: Photo, name: photo, widget: image, required: false}
+      - label: "Locations"
+        name: "locations"
+        file: "src/site/locations.json"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+          - label: Locations
+            name: locations
+            widget: list
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Address, name: address, widget: string}
+
+      - label: "Configuration"
+        name: "config"
+        file: "src/site/config.json"
+        fields:
+          - {label: "Google Analytics Tag ID", name: gaTagId, widget: string}
