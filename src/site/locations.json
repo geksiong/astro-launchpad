@@ -1,0 +1,14 @@
+{
+  "title": "Our Locations",
+  "intro": "You can find us all over the solar system!",
+  "locations": [
+    {
+      "name": "Earth",
+      "address": "No. 3, Sol System, Milky Way, Universe 616"
+    },
+    {
+      "name": "Mars",
+      "address": "No. 4, Sol System, Milky Way, Universe 616"
+    }
+  ]
+}

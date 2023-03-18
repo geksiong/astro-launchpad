@@ -1,0 +1,14 @@
+{
+  "title": "About Us",
+  "intro": "We have been around for as long as the universe is around.",
+  "team": [
+    {
+      "name": "Dr Strange",
+      "position": "CEO"
+    },
+    {
+      "name": "Wong",
+      "position": "COO"
+    }
+  ]
+}
