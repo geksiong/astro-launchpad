@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
   <title>Decap CMS</title>
+
+  <!--
+    Interim fix for cursor bug affecting editor usability
+    Issue: https://github.com/decaporg/decap-cms/issues/6557
+    Fix was merged but not yet released as of v2.10.192
+  -->
+  <style>
+    [data-slate-editor] {
+        -webkit-user-modify: read-write !important;
+    }
+    </style>
 </head>
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
