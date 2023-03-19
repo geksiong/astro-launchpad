@@ -1,0 +1,17 @@
+---
+import '@styles/global.css';
+
+import HtmlHead from '@components/HtmlHead.astro';
+
+import siteConfig from '@site/config.json';
+
+const { content } = Astro.props;
+---
+<html lang="en">
+  <HtmlHead content={content} />
+	<body>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
