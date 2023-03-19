@@ -5,12 +5,16 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 
 import siteConfig from '@site/config.json';
 
+import {format} from 'date-fns';
+
 const { frontmatter, headings } = Astro.props;
+
+const publishDate = format(new Date(frontmatter.date), 'dd MMMM yyyy, H:mm:ss');
 ---
 <BaseLayout content={frontmatter}>
   <article>
     <h1>{frontmatter.title}</h1>
-    <p>Published: {frontmatter.date}</p>
+    <p>Published on {publishDate}</p>
     <img src={frontmatter.thumbnail} />
 
     <p>
