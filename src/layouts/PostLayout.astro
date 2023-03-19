@@ -1,0 +1,21 @@
+---
+import '@styles/global.css';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+import siteConfig from '@site/config.json';
+
+const { frontmatter, headings } = Astro.props;
+---
+<BaseLayout content={frontmatter}>
+  <article>
+    <h1>{frontmatter.title}</h1>
+    <p>Published: {frontmatter.date}</p>
+    <img src={frontmatter.thumbnail} />
+
+    <p>
+      <slot />
+    </p>
+
+  </article>
+</BaseLayout>
