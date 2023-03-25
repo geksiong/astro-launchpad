@@ -12,6 +12,7 @@ collections:
     name: "posts"
     folder: "src/pages/posts"
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
+    summary: "[{{year}}-{{month}}-{{day}}] {{title}}"
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
