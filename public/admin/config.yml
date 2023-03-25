@@ -26,7 +26,7 @@ collections:
     label_singular: "Wiki Page"
     name: wiki
     folder: "src/pages/wiki"
-    media_folder: "../../../public/media/wiki" # Relative path. Astro can only take files from the /public folder
+    media_folder: "/public/media/wiki" # Astro can only take files from the /public folder
     public_folder: "/media/wiki"
     slug: "{{slug}}"
     create: true
