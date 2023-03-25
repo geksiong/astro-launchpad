@@ -22,25 +22,44 @@ Depending on how the two CMSes evolve, this starter may still decide to switch.
 - [x] Media folder
 - [x] Site settings: about, locations, google analytics, etc
 - [x] Demo collection of articles
-  - [ ] Draft field for articles
+  - [x] Draft field for articles
   - [ ] Optional tags for articles
   - [ ] Selectable layout template (with default)
-- [?] Store media with articles instead of central folder (beta)
-- [ ] Integrate site CSS
+- [x] Own media folder for certain collections (beta)
+- [?] (not working as desired) Nested articles - e.g. for wiki or documentation site
+- [x] Integrate site CSS
+- [x] Integrate site favicon
 - [ ] Integrate page previews
 
 ### Site templates
 
-- [ ] Provide basic layouts for the contents, but without bringing in any particular web UI or CSS frameworks
-- [ ] Provide a very basic baseline CSS just so that it looks decent
-- [ ] Site logo and favicon
-- [ ] Article layout
+- [x] Provide basic layouts for the contents, but without bringing in any particular web UI or CSS frameworks
+- [x] Provide a very basic baseline CSS just so that it looks decent
+- [ ] Site logo & favicon
+- [x] Article layout
 - [ ] Article listing page
+- [ ] Wiki / Docs pages
 - [ ] About page
 - [ ] Tags listing page
-- [ ] PWA configuration
+- [ ] PWA site
+- [ ] static search engine integration
+- [ ] RSS feed
 
+## Other ideas
+
+- light/dark theme toggle
+- (fancy) special layout for presentation content
+- (fancy) special layout or component for code blocks
+- (fancy) MDX? no editor
 
 ## Notes
 
 - Published date is configured as a datetime, and recorded as UTC. If you want to store date only, it might good to set the date picker to UTC so that everyone sees the same date regardless of where they are.
+
+## Limitations
+
+- media folder does not support subfolders
+- if a collection specify its own media folder, it will not be able to pick from the global folder
+- nested collections are wonky, and can only work with index files
+  - https://github.com/decaporg/decap-cms/issues/4972
+  - https://github.com/decaporg/decap-cms/pull/6498
