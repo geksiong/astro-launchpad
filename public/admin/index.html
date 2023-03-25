@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex" />
   <title>Decap CMS</title>
 
-  <link rel="icon" type="image/x-icon" href="/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
   <!--
     Interim fix for cursor bug affecting editor usability
@@ -22,5 +22,8 @@
 <body>
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+    CMS.registerPreviewStyle("https://unpkg.com/@picocss/pico@1.*/css/pico.min.css");
+  </script>
 </body>
 </html>
