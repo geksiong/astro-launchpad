@@ -3,6 +3,7 @@ import { defaultLayoutRemarkPlugin } from './src/utils/defaultlayout-remark-plug
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://www.my-site.dev',
   markdown: {
     remarkPlugins: [ defaultLayoutRemarkPlugin ]
   },
