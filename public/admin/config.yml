@@ -21,6 +21,7 @@ collections:
       - {label: "Updated Date", name: "updated", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ssZ", required: false}
       - {label: "Draft", name: "draft", widget: "boolean", default: false}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false, hint: "Comma-separated list of tags"}
       - {label: "Body", name: "body", widget: "markdown"}
 
   - label: "Wiki"

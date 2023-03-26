@@ -20,4 +20,10 @@ let displayDate = format(new Date(postDate), 'dd MMMM yyyy, H:mm:ss');
     <dd>{displayDate}</dd>
   </dl>
 
+  <ul>
+    { post.frontmatter.tags?.map((tag) => (
+      <li>{ tag }</li>
+    ))}
+  </ul>
+
 </article>

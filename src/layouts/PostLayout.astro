@@ -17,6 +17,12 @@ const publishDate = format(new Date(frontmatter.date), 'dd MMMM yyyy, H:mm:ss');
     <p>Published on {publishDate}</p>
     <img src={frontmatter.thumbnail} />
 
+    <ul>
+      { frontmatter.tags?.map((tag) => (
+        <li>{ tag }</li>
+      ))}
+    </ul>
+
     <p>
       <slot />
     </p>
