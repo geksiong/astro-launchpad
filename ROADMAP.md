@@ -42,7 +42,7 @@ Depending on how the two CMSes evolve, this starter may still decide to switch.
 - [ ] About page
 - [x] Tags listing page
 - [ ] PWA site
-- [ ] static search engine integration
+- [x] static search engine integration
 - [x] RSS feed
 - [ ] Social meta tags
 
@@ -54,13 +54,15 @@ Depending on how the two CMSes evolve, this starter may still decide to switch.
 ## Other ideas
 
 - light/dark theme toggle
+- page transitions using Swup
 - (fancy) special layout for presentation content
 - (fancy) special layout or component for code blocks
 - (fancy) MDX? no editor
 
 ## Notes
 
-- Published date is configured as a datetime, and recorded as UTC. If you want to store date only, it might good to set the date picker to UTC so that everyone sees the same date regardless of where they are.
+- ~~Published date is configured as a datetime, and recorded as UTC. If you want to store date only, it might good to set the date picker to UTC so that everyone sees the same date regardless of where they are.~~
+- for pagefind to work, run `npm run build` and then `npm run preview` to test the prod build. The dev build will not work.
 
 ## Limitations
 
