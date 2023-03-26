@@ -23,7 +23,7 @@ Depending on how the two CMSes evolve, this starter may still decide to switch.
 - [x] Site settings: about, locations, google analytics, etc
 - [x] Demo collection of articles
   - [x] Draft field for articles
-  - [ ] Optional tags for articles
+  - [x] Optional tags for articles
   - [ ] Selectable layout template (with default)
 - [x] Own media folder for certain collections (beta)
 - [?] (not working as desired) Nested articles - e.g. for wiki or documentation site
@@ -37,13 +37,19 @@ Depending on how the two CMSes evolve, this starter may still decide to switch.
 - [x] Provide a very basic baseline CSS just so that it looks decent
 - [ ] Site logo & favicon
 - [x] Article layout
-- [ ] Article listing page
+- [x] Article listing page
 - [ ] Wiki / Docs pages
 - [ ] About page
-- [ ] Tags listing page
+- [x] Tags listing page
 - [ ] PWA site
 - [ ] static search engine integration
-- [ ] RSS feed
+- [x] RSS feed
+- [ ] Social meta tags
+
+### Refactor
+
+- [ ] change `date` to `pubDate` to align better with RSS feeds
+- [ ] Convert from pages folder to content collections to fully decouple contents from astro codes
 
 ## Other ideas
 
