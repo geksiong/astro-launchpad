@@ -1,0 +1,34 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostPreview from '../../components/PostPreview.astro';
+import Paginator from '../../components/Paginator.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await Astro.glob('./**/*.md');
+  const sortedPosts = allPosts.sort((a, b) => {
+    let dateA = new Date(a.frontmatter.updated ? a.frontmatter.updated : a.frontmatter.date).valueOf();
+    let dateB = new Date(b.frontmatter.updated ? b.frontmatter.updated : b.frontmatter.date).valueOf();
+    return dateB - dateA;
+  });
+  return paginate(sortedPosts, {pageSize: 5});
+}
+let content = {
+  title: "All Posts",
+}
+let { page } = Astro.props;
+---
+
+<BaseLayout content={content}>
+  <div>
+		<h2>{content.title}</h2>
+
+		<ul>
+      {page.data.map((post) => (
+        <li>
+          <PostPreview post={post} />
+        </li>
+      ))}
+    </ul>
+    <Paginator page={page} />
+  </div>
+</BaseLayout>
