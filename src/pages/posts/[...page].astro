@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostPreview from '../../components/PostPreview.astro';
-import Paginator from '../../components/Paginator.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostPreview from '@components/PostPreview.astro';
+import Paginator from '@components/Paginator.astro';
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await Astro.glob('./**/*.md');
@@ -25,7 +25,7 @@ let { page } = Astro.props;
 		<ul>
       {page.data.map((post) => (
         <li>
-          <PostPreview post={post} />
+          <PostPreview post={post} tags={post.frontmatter.tags} />
         </li>
       ))}
     </ul>

@@ -1,9 +1,10 @@
 ---
+import { generateSlug } from '@utils/helpers';
 import siteConfig from '@site/config.json';
 
 import {format} from 'date-fns';
 
-let { post } = Astro.props;
+let { post, tags } = Astro.props;
 
 // display last updated date if exists, else publish date
 let postDate = ( post.frontmatter.updated ? post.frontmatter.updated : post.frontmatter.date );
@@ -21,8 +22,10 @@ let displayDate = format(new Date(postDate), 'dd MMMM yyyy, H:mm:ss');
   </dl>
 
   <ul>
-    { post.frontmatter.tags?.map((tag) => (
-      <li>{ tag }</li>
+    { tags?.map((tag) => (
+      <li>
+        <a href={ "/posts/tags/"+generateSlug(tag) }>{ tag }</a>
+      </li>
     ))}
   </ul>
 

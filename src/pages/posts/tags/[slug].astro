@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostPreview from '@components/PostPreview.astro';
+
+import { generateTagData } from '@utils/helpers.js'
+
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob('../**/*.md');
+  const sortedPosts = allPosts.sort((a, b) => {
+    let dateA = new Date(a.frontmatter.updated ? a.frontmatter.updated : a.frontmatter.date).valueOf();
+    let dateB = new Date(b.frontmatter.updated ? b.frontmatter.updated : b.frontmatter.date).valueOf();
+    return dateB - dateA;
+  });
+
+  const allTagsUnique = new Set();
+
+  sortedPosts.forEach(post => {
+    post.frontmatter.tags && post.frontmatter.tags.map(tag => {
+      allTagsUnique.add(tag);
+    })
+  })
+  const allTagsData = generateTagData(allTagsUnique);
+
+  // map through the tags array
+  return allTagsData.map((tag) => {
+    // filter the posts that match the given tag
+    const posts = sortedPosts.filter((post) => post.frontmatter.tags && post.frontmatter.tags.includes(tag.name))
+    return {
+      params: {slug: tag.slug},
+      props: {
+        tag: tag.name,
+        posts: posts
+      }
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+
+const content = {
+  title: `Posts Tagged with '${tag}'`
+}
+---
+
+<BaseLayout content={content.title}>
+  <h2>{content.title}</h2>
+
+  <ul>
+    {posts.map(post => (
+      <li>
+        <PostPreview post={post} tags={ [] } />
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

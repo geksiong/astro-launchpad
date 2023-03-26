@@ -8,6 +8,7 @@
       "@components/*": ["src/components/*"],
       "@site/*": ["src/site/*"],
       "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"],
     }
   }
 }
