@@ -7,18 +7,18 @@ import siteConfig from '@site/config.json';
 
 import {format} from 'date-fns';
 
-const { frontmatter, headings } = Astro.props;
+const { content } = Astro.props;
 
-const publishDate = format(new Date(frontmatter.date), 'dd MMMM yyyy, H:mm:ss');
+const publishDate = format(new Date(content.frontmatter.date), 'dd MMMM yyyy, H:mm:ss');
 ---
-<BaseLayout content={frontmatter}>
+<BaseLayout content={content.frontmatter}>
   <article>
-    <h1>{frontmatter.title}</h1>
+    <h1>{content.frontmatter.title}</h1>
     <p>Published on {publishDate}</p>
-    <img src={frontmatter.thumbnail} />
+    <img src={content.frontmatter.thumbnail} />
 
     <ul>
-      { frontmatter.tags?.map((tag) => (
+      { content.frontmatter.tags?.map((tag) => (
         <li>{ tag }</li>
       ))}
     </ul>

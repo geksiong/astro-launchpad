@@ -10,7 +10,7 @@ public_folder: "/media"
 collections:
   - label: "Posts"
     name: "posts"
-    folder: "src/pages/posts"
+    folder: "src/content/posts"
     slug: "{{year}}-{{month}}-{{day}}_{{slug}}"
     summary: "[{{year}}-{{month}}-{{day}}] {{title}}"
     create: true
