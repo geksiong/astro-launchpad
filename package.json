@@ -11,9 +11,9 @@
     "postbuild": "pagefind --source dist --bundle-dir pagefind"
   },
   "dependencies": {
-    "@astrojs/rss": "^2.3.1",
-    "astro": "^2.1.8",
-    "date-fns": "^2.29.3"
+    "@astrojs/rss": "^2.4.3",
+    "astro": "^2.7.0",
+    "date-fns": "^2.30.0"
   },
   "devDependencies": {
     "pagefind": "^0.12.0"
