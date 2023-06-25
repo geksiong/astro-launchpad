@@ -6,7 +6,7 @@ import {format} from 'date-fns';
 
 let { post, tags, url_prefix } = Astro.props;
 
-url_prefix = url_prefix || "/posts/tags/";
+url_prefix = url_prefix || "/posts";
 
 // display last updated date if exists, else publish date
 let postDate = ( post.data.updated ? post.data.updated : post.data.date );
@@ -14,7 +14,7 @@ let displayDate = format(new Date(postDate), 'dd MMMM yyyy, H:mm:ss');
 ---
 <article>
 
-  <h3><a href={post.slug}>{post.data.title}</a></h3>
+  <h3><a href={`${url_prefix}/${post.slug}`}>{post.data.title}</a></h3>
 
   <dl>
     <dt>Description</dt>
@@ -26,7 +26,7 @@ let displayDate = format(new Date(postDate), 'dd MMMM yyyy, H:mm:ss');
   <ul>
     { tags?.map((tag) => (
       <li>
-        <a href={ url_prefix+generateSlug(tag) }>{ tag }</a>
+        <a href={ `${url_prefix}/tags/`+generateSlug(tag) }>{ tag }</a>
       </li>
     ))}
   </ul>

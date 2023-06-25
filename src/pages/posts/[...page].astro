@@ -12,9 +12,9 @@ export async function getStaticPaths({ paginate }) {
     let dateB = new Date(b.data.updated ? b.data.updated : b.data.date).valueOf();
     return dateB - dateA;
   });
-  const paths = sortedPosts.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
+  //const paths = sortedPosts.map(entry => ({
+  //  params: { slug: entry.slug }, props: { entry },
+  //}));
 
   return paginate(sortedPosts, {pageSize: 5});
 }
