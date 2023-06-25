@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostPreview from '@components/PostPreview.astro';
+import Paginator from '@components/Paginator.astro';
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection('wiki')
+  const sortedPosts = allPosts.sort((a, b) => {
+    let dateA = new Date(a.data.updated ? a.data.updated : a.data.date).valueOf();
+    let dateB = new Date(b.data.updated ? b.data.updated : b.data.date).valueOf();
+    return dateB - dateA;
+  });
+  const paths = sortedPosts.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+
+  return paginate(sortedPosts, {pageSize: 5});
+}
+
+const { page } = Astro.props;
+
+const content = {
+  title: "All Wiki Articles",
+}
+---
+
+<BaseLayout content={content}>
+  <div>
+		<h2>{content.title}</h2>
+
+		<ul>
+      {page.data.map((post) => (
+        <li>
+          <PostPreview post={post} tags={post.data.tags} url_prefix="/wiki/tags/" />
+        </li>
+      ))}
+    </ul>
+    <Paginator page={page} />
+  </div>
+</BaseLayout>
