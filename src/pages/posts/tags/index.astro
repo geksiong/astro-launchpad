@@ -1,21 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
+import { getAllTagsData } from '@utils/helpers.js';
 
 import BaseLayout from '@layouts/BaseLayout.astro';
 
-import {generateTagData} from '@utils/helpers.js';
-
-const allPosts = await getCollection('posts');
-//const allPosts = await Astro.glob('../**/*.md');
-const allTagsUnique = new Set();
-
-allPosts.forEach(post => {
-  post.data.tags && post.data.tags.map(tag => {
-    allTagsUnique.add(tag);
-  })
-})
-
-const allTagsData = generateTagData(allTagsUnique);
+const allTagsData = await getAllTagsData('posts');
 
 let content = {
   title: "Tags",

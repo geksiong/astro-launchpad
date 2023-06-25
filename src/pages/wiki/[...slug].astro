@@ -1,13 +1,10 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollectionEntries } from '@utils/helpers';
 
 import PostLayout from '@layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
-  const collectionEntries = await getCollection('wiki');
-  return collectionEntries.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
+  return getCollectionEntries('wiki');
 }
 
 const { entry } = Astro.props;

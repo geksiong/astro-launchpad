@@ -1,40 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollectionEntriesByTag } from '@utils/helpers.js'
 
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostPreview from '@components/PostPreview.astro';
 
-import { generateTagData } from '@utils/helpers.js'
-
 export async function getStaticPaths() {
-  const allPosts = await getCollection('wiki');
-  const sortedPosts = allPosts.sort((a, b) => {
-    let dateA = new Date(a.data.updated ? a.data.updated : a.data.date).valueOf();
-    let dateB = new Date(b.data.updated ? b.data.updated : b.data.date).valueOf();
-    return dateB - dateA;
-  });
-
-  const allTagsUnique = new Set();
-
-  sortedPosts.forEach(post => {
-    post.data.tags && post.data.tags.map(tag => {
-      allTagsUnique.add(tag);
-    })
-  })
-  const allTagsData = generateTagData(allTagsUnique);
-
-  // map through the tags array
-  return allTagsData.map((tag) => {
-    // filter the posts that match the given tag
-    const posts = sortedPosts.filter((post) => post.data.tags && post.data.tags.includes(tag.name))
-    return {
-      params: {slug: tag.slug},
-      props: {
-        tag: tag.name,
-        posts: posts
-      }
-    };
-  });
+  return await getCollectionEntriesByTag('wiki');
 }
 
 const { tag, posts } = Astro.props;

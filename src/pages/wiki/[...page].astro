@@ -1,22 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
+import { getSortedCollectionEntries } from '@utils/helpers';
 
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostPreview from '@components/PostPreview.astro';
 import Paginator from '@components/Paginator.astro';
 
 export async function getStaticPaths({ paginate }) {
-  const allPosts = await getCollection('wiki')
-  const sortedPosts = allPosts.sort((a, b) => {
-    let dateA = new Date(a.data.updated ? a.data.updated : a.data.date).valueOf();
-    let dateB = new Date(b.data.updated ? b.data.updated : b.data.date).valueOf();
-    return dateB - dateA;
-  });
-  const paths = sortedPosts.map(entry => ({
-    params: { slug: entry.slug }, props: { entry },
-  }));
-
-  return paginate(sortedPosts, {pageSize: 5});
+  return paginate(await getSortedCollectionEntries('wiki'), {pageSize: 5});
 }
 
 const { page } = Astro.props;
